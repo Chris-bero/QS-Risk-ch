@@ -1,0 +1,808 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insurance & Risk Mastery | Chapter 2-3 Quiz</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@4.5.0/index.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cairo@4.5.0/index.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#0a0e1a;color:#e2e8f0;min-height:100vh}
+.bg-mesh{position:fixed;inset:0;background:radial-gradient(ellipse at 20% 30%,rgba(59,130,246,.12) 0%,transparent 50%),radial-gradient(ellipse at 80% 70%,rgba(139,92,246,.1) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(251,191,36,.06) 0%,transparent 50%);pointer-events:none;z-index:0}
+.glass{background:rgba(255,255,255,.04);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
+.glass-strong{background:rgba(255,255,255,.07);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);border:1px solid rgba(255,255,255,.12)}
+.gt-gold{background:linear-gradient(135deg,#fbbf24,#f59e0b,#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gt-blue{background:linear-gradient(135deg,#60a5fa,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gt-purple{background:linear-gradient(135deg,#a78bfa,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gt-green{background:linear-gradient(135deg,#34d399,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.btn{transition:all .3s cubic-bezier(.4,0,.2,1);font-weight:600;cursor:pointer;border:none;outline:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:linear-gradient(135deg,#3b82f6,#2563eb);color:#fff}
+.btn-primary:hover{box-shadow:0 10px 40px rgba(59,130,246,.4);transform:translateY(-2px)}
+.btn-gold{background:linear-gradient(135deg,#fbbf24,#f59e0b);color:#1a1a2e}
+.btn-gold:hover{box-shadow:0 10px 40px rgba(251,191,36,.4);transform:translateY(-2px)}
+.btn-purple{background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff}
+.btn-purple:hover{box-shadow:0 10px 40px rgba(139,92,246,.4);transform:translateY(-2px)}
+.btn-green{background:linear-gradient(135deg,#10b981,#059669);color:#fff}
+.btn-green:hover{box-shadow:0 10px 40px rgba(16,185,129,.4);transform:translateY(-2px)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.2);color:#e2e8f0}
+.btn-outline:hover{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.3)}
+.btn-toggle{background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;transition:all .3s}
+.btn-toggle:hover{box-shadow:0 0 25px rgba(139,92,246,.5);transform:translateY(-2px)}
+.btn-toggle.active{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 0 25px rgba(16,185,129,.4)}
+.option-btn{transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer}
+.option-btn:hover:not(.disabled){transform:translateX(-4px);border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.08)}
+.option-btn.selected{border-color:#3b82f6!important;background:rgba(59,130,246,.15)!important;box-shadow:0 0 20px rgba(59,130,246,.2)!important}
+.option-btn.correct{border-color:#10b981!important;background:rgba(16,185,129,.15)!important;box-shadow:0 0 25px rgba(16,185,129,.35)!important}
+.option-btn.wrong{border-color:#ef4444!important;background:rgba(239,68,68,.15)!important;box-shadow:0 0 25px rgba(239,68,68,.35)!important}
+.option-btn.disabled{pointer-events:none;opacity:.85}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.fade-in{animation:fadeIn .5s ease forwards}
+.scale-in{animation:scaleIn .4s ease forwards}
+.explanation-box{animation:fadeIn .4s ease forwards}
+.translation-visible{animation:fadeIn .3s ease forwards}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:rgba(255,255,255,.02)}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:3px}
+.stopwatch{font-variant-numeric:tabular-nums;letter-spacing:.05em}
+.sticky-header{position:sticky;top:0;z-index:50;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);background:rgba(10,14,26,.9);border-bottom:1px solid rgba(255,255,255,.08)}
+.question-card{transition:all .3s}
+.question-card.answered-correct{border-left:4px solid #10b981}
+.question-card.answered-wrong{border-left:4px solid #ef4444}
+.category-divider{position:sticky;top:72px;z-index:40;scroll-margin-top:80px}
+.stat-card{transition:all .3s}
+.stat-card:hover{transform:translateY(-4px)}
+.filter-btn{transition:all .3s;cursor:pointer}
+.filter-btn:hover{transform:translateY(-2px)}
+.filter-btn.active{box-shadow:0 0 25px rgba(59,130,246,.4);transform:translateY(-2px)}
+.hidden-q{display:none!important}
+.modal-overlay{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.8);backdrop-filter:blur(10px)}
+.modal-overlay.hidden{display:none}
+.modal-content{max-width:900px;width:100%;max-height:90vh;overflow-y:auto;animation:scaleIn .4s ease}
+.concept-card{transition:all .3s}
+.concept-card:hover{transform:translateY(-4px);box-shadow:0 10px 40px rgba(59,130,246,.2)}
+.bilingual-q{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start;transition:all .3s}
+@media(max-width:768px){.bilingual-q{grid-template-columns:1fr;}}
+.bilingual-en{color:#f1f5f9;font-weight:600;font-size:1rem;line-height:1.6}
+.bilingual-ar{color:#c4b5fd;font-size:.9rem;line-height:1.7;padding:12px 16px;background:rgba(139,92,246,.08);border-radius:12px;border-right:3px solid #8b5cf6;transition:all .3s}
+.option-bilingual{display:flex;flex-direction:column;gap:4px}
+.option-en{color:#f1f5f9;font-weight:500;font-size:.9rem}
+.option-ar{color:#a78bfa;font-size:.8rem;padding-top:4px;border-top:1px dashed rgba(139,92,246,.2);transition:all .3s}
+.formula-box{background:rgba(59,130,246,.08);border-left:3px solid #3b82f6;padding:10px 14px;border-radius:8px;font-family:'Courier New',monospace;font-size:.85rem;color:#93c5fd;margin:8px 0}
+</style>
+</head>
+
+<body>
+<div class="bg-mesh"></div>
+
+<!-- ========== KEY CONCEPTS MODAL ========== -->
+<div id="conceptsModal" class="modal-overlay hidden">
+<div class="modal-content glass-strong rounded-3xl p-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-3xl font-black gt-gold"><i class="fas fa-book-open mr-2"></i>Key Concepts Review</h2>
+<button id="closeModalBtn" class="btn btn-outline px-4 py-2 rounded-xl"><i class="fas fa-times"></i></button>
+</div>
+<div class="space-y-4">
+<div class="concept-card glass rounded-2xl p-5 border-l-4 border-blue-500">
+<h3 class="font-bold text-blue-300 text-lg mb-2"><i class="fas fa-shield-halved mr-2"></i>Definition of Insurance</h3>
+<p class="text-slate-300 text-sm mb-2"><strong>Insurance:</strong> A risk management device in which a large number of exposure units are combined to form a pool, and losses are spread across all members.</p>
+<p class="text-slate-300 text-sm"><strong>Key characteristics:</strong> Pooling of losses, payment of fortuitous losses, risk transfer, indemnification</p>
+</div>
+<div class="concept-card glass rounded-2xl p-5 border-l-4 border-purple-500">
+<h3 class="font-bold text-purple-300 text-lg mb-2"><i class="fas fa-chart-line mr-2"></i>Law of Large Numbers</h3>
+<p class="text-slate-300 text-sm">The greater the number of exposures, the more closely will the actual results approach the probable results expected from an infinite number of exposures.</p>
+<div class="formula-box">SD(pool) = SD(individual) / √n</div>
+</div>
+<div class="concept-card glass rounded-2xl p-5 border-l-4 border-amber-500">
+<h3 class="font-bold text-amber-300 text-lg mb-2"><i class="fas fa-clipboard-check mr-2"></i>Ideally Insurable Risk (6 Requirements)</h3>
+<ol class="list-decimal list-inside text-slate-300 text-sm space-y-1 mt-2">
+<li>Large number of exposure units</li>
+<li>Accidental and unintentional loss</li>
+<li>Determinable and measurable loss</li>
+<li>No catastrophic loss</li>
+<li>Calculable chance of loss</li>
+<li>Economically feasible premium</li>
+</ol>
+</div>
+<div class="concept-card glass rounded-2xl p-5 border-l-4 border-red-500">
+<h3 class="font-bold text-red-300 text-lg mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Adverse Selection</h3>
+<p class="text-slate-300 text-sm mb-2">Tendency of persons with a higher-than-average chance of loss to seek insurance at standard rates.</p>
+<p class="text-slate-300 text-sm"><strong>Control methods:</strong> Careful underwriting, Risk classification, Policy provisions (suicide clause, waiting periods), Mandates & subsidies</p>
+</div>
+<div class="concept-card glass rounded-2xl p-5 border-l-4 border-green-500">
+<h3 class="font-bold text-green-300 text-lg mb-2"><i class="fas fa-balance-scale mr-2"></i>Insurance vs Gambling vs Hedging</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm mt-2">
+<div class="text-slate-300"><strong class="text-green-300">Insurance:</strong> Transfers existing pure risk</div>
+<div class="text-slate-300"><strong class="text-red-300">Gambling:</strong> Creates new speculative risk</div>
+<div class="text-slate-300"><strong class="text-amber-300">Hedging:</strong> Transfers price risk to speculator</div>
+</div>
+</div>
+<div class="concept-card glass rounded-2xl p-5 border-l-4 border-cyan-500">
+<h3 class="font-bold text-cyan-300 text-lg mb-2"><i class="fas fa-calculator mr-2"></i>Key Formulas</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mt-2">
+<div class="formula-box">E(L) = Σ P·L</div>
+<div class="formula-box">SD = √[Σ P(L−E(L))²]</div>
+<div class="formula-box">P = Expected claims / (1−e−p)</div>
+<div class="formula-box">Loss Ratio = Incurred losses / Earned premiums</div>
+</div>
+</div>
+<div class="concept-card glass rounded-2xl p-5 border-l-4 border-pink-500">
+<h3 class="font-bold text-pink-300 text-lg mb-2"><i class="fas fa-hand-holding-heart mr-2"></i>Social Benefits & Costs</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm mt-2">
+<div class="text-slate-300"><strong class="text-green-300">Benefits:</strong> Indemnification, Reduction of worry, Investment funds, Loss prevention, Credit enhancement</div>
+<div class="text-slate-300"><strong class="text-red-300">Costs:</strong> Cost of doing business, Fraudulent claims, Inflated claims, Higher premiums reduce disposable income</div>
+</div>
+</div>
+</div>
+<div class="mt-6 text-center">
+<button id="gotItBtn" class="btn btn-primary px-8 py-3 rounded-xl text-lg"><i class="fas fa-check"></i> Got it, Close</button>
+</div>
+</div>
+</div>
+
+<!-- ========== WELCOME SCREEN ========== -->
+<div id="welcomeScreen" class="min-h-screen flex flex-col items-center justify-center p-4 relative z-10">
+<div class="text-center max-w-5xl mx-auto">
+<div class="mb-8 scale-in">
+<div class="w-28 h-28 mx-auto mb-6 rounded-3xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-5xl shadow-2xl" style="animation:float 3s ease infinite">
+<i class="fas fa-umbrella text-white"></i>
+</div>
+<h1 class="text-5xl md:text-7xl font-black mb-3 gt-gold">Insurance & Risk</h1>
+<h2 class="text-2xl md:text-3xl text-slate-300 mb-2 font-bold">Mastery Quiz</h2>
+<p class="text-slate-400 text-lg">Chapters 2-3: Insurance and Risk Management</p>
+<p class="text-slate-500 text-sm mt-2"> | Pearson Education</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="glass-strong rounded-2xl p-5 text-center stat-card">
+<div class="w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center"><i class="fas fa-list-check text-white text-xl"></i></div>
+<div class="text-3xl font-black gt-blue">20</div>
+<div class="text-xs text-slate-400 mt-1">MCQ Questions</div>
+</div>
+<div class="glass-strong rounded-2xl p-5 text-center stat-card">
+<div class="w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 flex items-center justify-center"><i class="fas fa-file-lines text-white text-xl"></i></div>
+<div class="text-3xl font-black gt-purple">10</div>
+<div class="text-xs text-slate-400 mt-1">Scenario Based</div>
+</div>
+<div class="glass-strong rounded-2xl p-5 text-center stat-card">
+<div class="w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center"><i class="fas fa-layer-group text-white text-xl"></i></div>
+<div class="text-3xl font-black gt-gold">10</div>
+<div class="text-xs text-slate-400 mt-1">Classification</div>
+</div>
+<div class="glass-strong rounded-2xl p-5 text-center stat-card">
+<div class="w-12 h-12 mx-auto mb-2 rounded-xl bg-gradient-to-br from-green-500 to-green-600 flex items-center justify-center"><i class="fas fa-check-double text-white text-xl"></i></div>
+<div class="text-3xl font-black gt-green">5</div>
+<div class="text-xs text-slate-400 mt-1">True / False</div>
+</div>
+</div>
+<div class="glass-strong rounded-3xl p-6 mb-8">
+<h3 class="text-xl font-bold gt-gold mb-4"><i class="fas fa-star mr-2"></i>Features</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+<div class="flex items-center gap-3 text-slate-300"><i class="fas fa-book-open text-blue-400 text-xl"></i><span>Key Concepts Review</span></div>
+<div class="flex items-center gap-3 text-slate-300"><i class="fas fa-language text-purple-400 text-xl"></i><span>Bilingual Display (EN + AR)</span></div>
+<div class="flex items-center gap-3 text-slate-300"><i class="fas fa-filter text-amber-400 text-xl"></i><span>Category Filters</span></div>
+<div class="flex items-center gap-3 text-slate-300"><i class="fas fa-stopwatch text-green-400 text-xl"></i><span>Stopwatch Timer</span></div>
+<div class="flex items-center gap-3 text-slate-300"><i class="fas fa-file-word text-blue-400 text-xl"></i><span>Export to Word</span></div>
+<div class="flex items-center gap-3 text-slate-300"><i class="fas fa-chart-line text-purple-400 text-xl"></i><span>Performance Analytics</span></div>
+</div>
+</div>
+<div>
+<label class="block text-slate-400 text-sm mb-2">Your Name</label>
+<input id="playerName" type="text" placeholder="Enter your name..." class="w-full max-w-md mx-auto block glass-strong rounded-xl px-5 py-3 text-center text-white outline-none focus:border-blue-500 transition mb-6" />
+<div class="flex flex-wrap justify-center gap-3">
+<button id="reviewConceptsBtn" class="btn btn-gold text-lg px-8 py-4 rounded-2xl"><i class="fas fa-book-open"></i> Review Key Concepts</button>
+<button id="startQuizBtn" class="btn btn-primary text-lg px-12 py-4 rounded-2xl"><i class="fas fa-play"></i> Start Quiz</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ========== QUIZ SCREEN ========== -->
+<div id="quizScreen" class="hidden relative z-10">
+<div class="sticky-header">
+<div class="max-w-5xl mx-auto px-4 py-3">
+<div class="flex items-center justify-between flex-wrap gap-3">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"><i class="fas fa-umbrella text-white"></i></div>
+<div><div class="font-bold text-white text-sm">Insurance & Risk Quiz</div><div class="text-xs text-slate-400" id="headerPlayerName">Learner</div></div>
+</div>
+<div class="flex items-center gap-3 flex-wrap">
+<button id="globalTranslationToggle" class="btn btn-toggle px-4 py-2 rounded-xl text-sm">
+<i class="fas fa-language"></i>
+<span id="translationToggleText">Hide Translation</span>
+</button>
+<div class="glass rounded-xl px-4 py-2 flex items-center gap-2"><i class="fas fa-stopwatch text-blue-400"></i><span id="stopwatchDisplay" class="stopwatch font-bold text-blue-400">00:00</span></div>
+<div class="glass rounded-xl px-4 py-2 flex items-center gap-2"><i class="fas fa-star text-amber-400"></i><span id="scoreDisplay" class="font-bold text-amber-400">0</span><span class="text-slate-500 text-sm">/ <span id="totalQuestions">45</span></span></div>
+</div>
+</div>
+<div class="w-full bg-slate-800/50 rounded-full h-1.5 overflow-hidden mt-3">
+<div id="progressBar" class="h-full rounded-full bg-gradient-to-r from-blue-500 via-purple-500 to-amber-500 transition-all duration-500" style="width:0%"></div>
+</div>
+<div class="flex justify-between text-xs text-slate-500 mt-1">
+<span id="answeredCount">0 answered</span>
+<span id="progressPercent">0%</span>
+</div>
+</div>
+</div>
+
+<div class="max-w-5xl mx-auto px-4 pt-4">
+<div class="glass-strong rounded-2xl p-4">
+<div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+<h3 class="font-bold text-slate-300 text-sm"><i class="fas fa-filter mr-2 text-blue-400"></i>Quick Filter</h3>
+<span class="text-xs text-slate-500">Click to jump to category</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-2">
+<button data-filter="all" class="filter-btn active glass rounded-xl p-3 text-center"><div class="flex items-center justify-center gap-2 mb-1"><i class="fas fa-grip text-white"></i><span class="font-bold text-white text-sm">All</span></div><div class="text-xs text-slate-400">45 Questions</div></button>
+<button data-filter="mcq" class="filter-btn glass rounded-xl p-3 text-center"><div class="flex items-center justify-center gap-2 mb-1"><i class="fas fa-list-check text-blue-400"></i><span class="font-bold text-blue-300 text-sm">MCQ</span></div><div class="text-xs text-slate-400">20 Questions</div></button>
+<button data-filter="scenario" class="filter-btn glass rounded-xl p-3 text-center"><div class="flex items-center justify-center gap-2 mb-1"><i class="fas fa-file-lines text-purple-400"></i><span class="font-bold text-purple-300 text-sm">Scenario</span></div><div class="text-xs text-slate-400">10 Questions</div></button>
+<button data-filter="classification" class="filter-btn glass rounded-xl p-3 text-center"><div class="flex items-center justify-center gap-2 mb-1"><i class="fas fa-layer-group text-amber-400"></i><span class="font-bold text-amber-300 text-sm">Classify</span></div><div class="text-xs text-slate-400">10 Questions</div></button>
+<button data-filter="truefalse" class="filter-btn glass rounded-xl p-3 text-center"><div class="flex items-center justify-center gap-2 mb-1"><i class="fas fa-check-double text-green-400"></i><span class="font-bold text-green-300 text-sm">T / F</span></div><div class="text-xs text-slate-400">5 Questions</div></button>
+</div>
+</div>
+</div>
+
+<div class="max-w-5xl mx-auto px-4 py-6">
+<div id="questionsContainer" class="space-y-6"></div>
+<div class="mt-10 mb-8 glass-strong rounded-3xl p-6">
+<div class="text-center mb-6">
+<h3 class="text-2xl font-black gt-gold mb-2">Ready to Submit?</h3>
+<p class="text-slate-400 text-sm">Review your answers or submit to see your results</p>
+</div>
+<div class="flex flex-wrap justify-center gap-3">
+<button id="exportWordBtn1" class="btn btn-green px-6 py-3 rounded-xl"><i class="fas fa-file-word"></i> Export to Word</button>
+<button id="submitQuizBtn" class="btn btn-primary px-8 py-3 rounded-xl"><i class="fas fa-flag-checkered"></i> Submit & See Results</button>
+<button id="restartBtn1" class="btn btn-outline px-6 py-3 rounded-xl"><i class="fas fa-redo"></i> Restart</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ========== RESULTS SCREEN ========== -->
+<div id="resultsScreen" class="hidden min-h-screen relative z-10 py-8">
+<div class="max-w-4xl mx-auto px-4">
+<div class="glass-strong rounded-3xl p-8 text-center mb-6 scale-in">
+<div class="w-24 h-24 mx-auto mb-4 rounded-3xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-5xl shadow-2xl"><i class="fas fa-trophy text-white"></i></div>
+<h2 class="text-4xl font-black gt-gold mb-2">Final Results</h2>
+<p class="text-slate-400 mb-6" id="resultPlayerName"></p>
+<div class="text-7xl font-black mb-2"><span id="finalScore" class="gt-gold">0</span><span class="text-slate-500 text-3xl">/ <span id="totalPossible">45</span></span></div>
+<div class="text-2xl text-slate-300 mb-2"><span id="percentage">0</span>%</div>
+<div id="gradeBadge" class="inline-block text-lg px-6 py-2 mt-2 rounded-full font-bold text-white"></div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+<div class="glass rounded-2xl p-4 text-center stat-card"><i class="fas fa-check-circle text-green-400 text-2xl mb-2"></i><div id="correctCount" class="text-3xl font-black text-green-400">0</div><div class="text-xs text-slate-400">Correct</div></div>
+<div class="glass rounded-2xl p-4 text-center stat-card"><i class="fas fa-times-circle text-red-400 text-2xl mb-2"></i><div id="wrongCount" class="text-3xl font-black text-red-400">0</div><div class="text-xs text-slate-400">Wrong</div></div>
+<div class="glass rounded-2xl p-4 text-center stat-card"><i class="fas fa-clock text-blue-400 text-2xl mb-2"></i><div id="totalTime" class="text-3xl font-black text-blue-400">0:00</div><div class="text-xs text-slate-400">Total Time</div></div>
+<div class="glass rounded-2xl p-4 text-center stat-card"><i class="fas fa-bolt text-amber-400 text-2xl mb-2"></i><div id="avgTime" class="text-3xl font-black text-amber-400">0s</div><div class="text-xs text-slate-400">Avg / Question</div></div>
+</div>
+<div class="glass-strong rounded-3xl p-6 mb-6">
+<h3 class="text-xl font-bold gt-blue mb-4"><i class="fas fa-chart-bar mr-2"></i>Performance by Category</h3>
+<div id="categoryBreakdown" class="space-y-4"></div>
+</div>
+<div class="glass-strong rounded-3xl p-6 mb-6">
+<h3 class="text-xl font-bold gt-gold mb-4"><i class="fas fa-medal mr-2"></i>Achievement Badges</h3>
+<div id="badgesContainer" class="flex flex-wrap gap-3 justify-center"></div>
+</div>
+<div class="text-center">
+<button id="exportWordBtn2" class="btn btn-green px-6 py-3 rounded-xl mr-2"><i class="fas fa-file-word"></i> Export to Word</button>
+<button id="reviewAnswersBtn" class="btn btn-outline px-6 py-3 rounded-xl mr-2"><i class="fas fa-search"></i> Review Answers</button>
+<button id="restartBtn2" class="btn btn-primary px-8 py-3 rounded-xl"><i class="fas fa-redo"></i> Restart Quiz</button>
+</div>
+</div>
+</div>
+
+<!-- ========== REVIEW SCREEN ========== -->
+<div id="reviewScreen" class="hidden min-h-screen relative z-10 py-8">
+<div class="max-w-5xl mx-auto px-4">
+<div class="glass-strong rounded-2xl p-4 mb-4 flex items-center justify-between flex-wrap gap-2">
+<h2 class="text-xl font-bold gt-gold"><i class="fas fa-search mr-2"></i>Review Answers</h2>
+<div class="flex gap-2">
+<button id="exportWordBtn3" class="btn btn-green px-4 py-2 rounded-xl text-sm"><i class="fas fa-file-word"></i> Word</button>
+<button id="backToResultsBtn" class="btn btn-outline px-4 py-2 rounded-xl text-sm"><i class="fas fa-arrow-left"></i> Back</button>
+</div>
+</div>
+<div id="reviewContainer" class="space-y-4"></div>
+<div class="text-center mt-6 mb-8">
+<button id="backToResultsBtn2" class="btn btn-primary px-8 py-3 rounded-xl"><i class="fas fa-arrow-left"></i> Back to Results</button>
+</div>
+</div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+const allQuestions = {
+mcq: [
+{en:"According to the Commission on Insurance Terminology, insurance is best defined as:",ar:"وفقاً للجنة مصطلحات التأمين، يُعرّف التأمين بأنه:",options:[{en:"A device in which a large number of exposure units are combined to form a pool",ar:"جهاز يتم فيه تجميع عدد كبير من وحدات التعرض لتكوين مجمع"},{en:"A contract that guarantees profit for the insured",ar:"عقد يضمن الربح للمؤمن له"},{en:"A speculative investment strategy",ar:"استراتيجية استثمارية مضاربية"},{en:"A government tax collection mechanism",ar:"آلية حكومية لجمع الضرائب"}],correct:0,explanation:{en:"Insurance is a risk management device in which a large number of exposure units are combined to form a pool, and losses are spread across all members.",ar:"التأمين هو جهاز لإدارة المخاطر يتم فيه تجميع عدد كبير من وحدات التعرض لتكوين مجمع، وتوزع الخسائر على جميع الأعضاء."}},
+{en:"The Law of Large Numbers states that:",ar:"ينص قانون الأعداد الكبيرة على أن:",options:[{en:"The greater the number of exposures, the more closely actual results approach probable results",ar:"كلما زاد عدد وحدات التعرض، اقتربت النتائج الفعلية أكثر من النتائج المحتملة"},{en:"Larger pools always have larger losses",ar:"المجاميع الأكبر دائماً لها خسائر أكبر"},{en:"Expected loss increases with pool size",ar:"الخسارة المتوقعة تزداد مع حجم المجمع"},{en:"Risk cannot be reduced through pooling",ar:"لا يمكن تقليل الخطر من خلال التجميع"}],correct:0,explanation:{en:"According to the Law of Large Numbers, the greater the number of exposures, the more closely will the actual results approach the probable results expected from an infinite number of exposures.",ar:"وفقاً لقانون الأعداد الكبيرة، كلما زاد عدد وحدات التعرض، اقتربت النتائج الفعلية أكثر من النتائج المحتملة المتوقعة من عدد لا نهائي من وحدات التعرض."}},
+{en:"Which of the following is NOT a requirement of an ideally insurable risk?",ar:"أي مما يلي ليس من متطلبات الخطر القابل للتأمين بشكل مثالي؟",options:[{en:"Large number of exposure units",ar:"عدد كبير من وحدات التعرض"},{en:"Accidental and unintentional loss",ar:"خسارة عرضية وغير متعمدة"},{en:"Guaranteed profit for the insurer",ar:"ربح مضمون لشركة التأمين"},{en:"Determinable and measurable loss",ar:"خسارة قابلة للتحديد والقياس"}],correct:2,explanation:{en:"The 6 requirements are: large number of exposure units, accidental/unintentional loss, determinable/measurable loss, no catastrophic loss, calculable chance of loss, economically feasible premium. Guaranteed profit is NOT a requirement.",ar:"المتطلبات الستة هي: عدد كبير من وحدات التعرض، خسارة عرضية/غير متعمدة، خسارة قابلة للتحديد/القياس، لا خسارة كارثية، احتمال خسارة قابل للحساب، قسط اقتصادي ممكن. الربح المضمون ليس من المتطلبات."}},
+{en:"Adverse selection refers to:",ar:"الاختيار المعاكس يشير إلى:",options:[{en:"Tendency of high-risk persons to seek insurance at standard rates",ar:"ميل الأشخاص ذوي الخطر العالي للبحث عن التأمين بمعدلات قياسية"},{en:"Insurer's careful selection of policyholders",ar:"الاختيار الدقيق لحملة الوثائق من قبل المؤمن"},{en:"Random selection of insured individuals",ar:"اختيار عشوائي للأفراد المؤمن عليهم"},{en:"Government regulation of insurance markets",ar:"تنظيم الحكومة لأسواق التأمين"}],correct:0,explanation:{en:"Adverse selection is the tendency of persons with a higher-than-average chance of loss to seek insurance at standard rates, which can lead to higher-than-expected losses.",ar:"الاختيار المعاكس هو ميل الأشخاص ذوي الاحتمال الأعلى من المتوسط للخسارة للبحث عن التأمين بمعدلات قياسية، مما قد يؤدي إلى خسائر أعلى من المتوقع."}},
+{en:"Which method is used by insurers to control adverse selection?",ar:"أي طريقة تستخدمها شركات التأمين للتحكم في الاختيار المعاكس؟",options:[{en:"Careful underwriting and risk classification",ar:"الاكتتاب الدقيق وتصنيف المخاطر"},{en:"Accepting all applicants without review",ar:"قبول جميع المتقدمين بدون مراجعة"},{en:"Charging the same premium to everyone",ar:"فرض نفس القسط على الجميع"},{en:"Eliminating all policy provisions",ar:"إلغاء جميع أحكام الوثيقة"}],correct:0,explanation:{en:"Insurers control adverse selection through: careful underwriting, risk classification, policy provisions (suicide clause, waiting periods), mandates, subsidies, and group coverage.",ar:"تتحكم شركات التأمين في الاختيار المعاكس من خلال: الاكتتاب الدقيق، تصنيف المخاطر، أحكام الوثيقة (بند الانتحار، فترات الانتظار)، التفويضات، الإعانات، والتغطية الجماعية."}},
+{en:"How does insurance differ from gambling?",ar:"كيف يختلف التأمين عن المقامرة؟",options:[{en:"Insurance transfers existing pure risk; gambling creates new speculative risk",ar:"التأمين ينقل خطراً بحتاً موجوداً؛ المقامرة تخلق خطراً مضاربياً جديداً"},{en:"Insurance is a form of gambling",ar:"التأمين هو شكل من أشكال المقامرة"},{en:"Both create new risks",ar:"كلاهما يخلق مخاطر جديدة"},{en:"There is no difference",ar:"لا يوجد فرق"}],correct:0,explanation:{en:"Insurance transfers an existing pure risk and reduces overall risk, while gambling creates a new speculative risk where none existed before.",ar:"التأمين ينقل خطراً بحتاً موجوداً ويقلل الخطر الإجمالي، بينما المقامرة تخلق خطراً مضاربياً جديداً حيث لم يكن موجوداً من قبل."}},
+{en:"Hedging differs from insurance because:",ar:"يختلف التحوط عن التأمين لأن:",options:[{en:"Hedging transfers price risk to a speculator; insurance transfers pure risk to an insurer",ar:"التحوط ينقل خطر السعر إلى مضارب؛ التأمين ينقل الخطر البحت إلى مؤمّن"},{en:"Both are the same technique",ar:"كلاهما نفس التقنية"},{en:"Hedging only covers property risks",ar:"التحوط يغطي مخاطر الممتلكات فقط"},{en:"Insurance is a form of hedging",ar:"التأمين هو شكل من أشكال التحوط"}],correct:0,explanation:{en:"Hedging transfers the risk of unfavorable price fluctuations to a speculator (e.g., futures contracts), while insurance transfers pure risk to an insurer through pooling.",ar:"التحوط ينقل خطر تقلبات الأسعار غير المواتية إلى مضارب (مثل العقود الآجلة)، بينما التأمين ينقل الخطر البحت إلى مؤمّن من خلال التجميع."}},
+{en:"The formula for break-even premium with expense loading (e) is:",ar:"صيغة القسط التعادلي مع تحميل المصاريف (e) هي:",options:[{en:"P = Expected claims / (1 - e)",ar:"P = المطالبات المتوقعة / (1 - e)"},{en:"P = Expected claims × e",ar:"P = المطالبات المتوقعة × e"},{en:"P = Expected claims + e",ar:"P = المطالبات المتوقعة + e"},{en:"P = Expected claims / e",ar:"P = المطالبات المتوقعة / e"}],correct:0,explanation:{en:"Break-even premium with expense loading: P = Expected claims / (1 - e). With profit loading (p): P = Expected claims / (1 - e - p).",ar:"القسط التعادلي مع تحميل المصاريف: P = المطالبات المتوقعة / (1 - e). مع تحميل الربح (p): P = المطالبات المتوقعة / (1 - e - p)."}},
+{en:"Loss ratio is calculated as:",ar:"يُحسب نسبة الخسارة كـ:",options:[{en:"Incurred losses / Earned premiums",ar:"الخسائر المتكبدة / الأقساط المكتسبة"},{en:"Earned premiums / Incurred losses",ar:"الأقساط المكتسبة / الخسائر المتكبدة"},{en:"Expected claims / Actual claims",ar:"المطالبات المتوقعة / المطالبات الفعلية"},{en:"Total assets / Total liabilities",ar:"إجمالي الأصول / إجمالي الالتزامات"}],correct:0,explanation:{en:"Loss ratio = Incurred losses / Earned premiums. It measures what portion of premiums is paid out as claims.",ar:"نسبة الخسارة = الخسائر المتكبدة / الأقساط المكتسبة. تقيس أي جزء من الأقساط يُدفع كمطالبات."}},
+{en:"In a pooling arrangement with n identical independent risks, the standard deviation of each owner's share is:",ar:"في ترتيب التجميع مع n من المخاطر المستقلة المتطابقة، الانحراف المعياري لحصة كل مالك هو:",options:[{en:"SD(individual) / n",ar:"SD(الفرد) / √n"},{en:"SD(individual) × n",ar:"SD(الفرد) × n"},{en:"SD(individual) / n",ar:"SD(الفرد) / n"},{en:"SD(individual) × √n",ar:"SD(الفرد) × √n"}],correct:0,explanation:{en:"For a pool of n identical independent risks: SD(pool) = SD(individual) / √n. This shows how pooling reduces risk.",ar:"لمجمع من n مخاطر مستقلة متطابقة: SD(المجمع) = SD(الفرد) / √n. هذا يوضح كيف يقلل التجميع من الخطر."}},
+{en:"Which of the following is a social benefit of insurance?",ar:"أي مما يلي يُعد فائدة اجتماعية للتأمين؟",options:[{en:"Indemnification for loss and reduction of worry",ar:"التعويض عن الخسارة وتقليل القلق"},{en:"Fraudulent claims",ar:"المطالبات الاحتيالية"},{en:"Inflated claims",ar:"المطالبات المبالغ فيها"},{en:"Higher premiums reducing disposable income",ar:"أقساط أعلى تقلل الدخل المتاح"}],correct:0,explanation:{en:"Social benefits include: indemnification for loss, reduction of worry and fear, source of investment funds, loss prevention, and enhancement of credit.",ar:"الفوائد الاجتماعية تشمل: التعويض عن الخسارة، تقليل القلق والخوف، مصدر لأموال الاستثمار، منع الخسارة، وتعزيز الائتمان."}},
+{en:"Unemployment insurance fails which requirement of an ideally insurable risk?",ar:"تأمين البطالة يفشل في أي متطلب من متطلبات الخطر القابل للتأمين بشكل مثالي؟",options:[{en:"No catastrophic loss - unemployment is correlated across many workers",ar:"لا خسارة كارثية - البطالة مترابطة عبر العديد من العمال"},{en:"Large number of exposure units",ar:"عدد كبير من وحدات التعرض"},{en:"Determinable and measurable loss",ar:"خسارة قابلة للتحديد والقياس"},{en:"Calculable chance of loss",ar:"احتمال خسارة قابل للحساب"}],correct:0,explanation:{en:"Unemployment violates the 'no catastrophic loss' requirement because many workers lose jobs simultaneously during a recession, creating correlated losses.",ar:"تنتهك البطالة متطلب 'لا خسارة كارثية' لأن العديد من العمال يفقدون وظائفهم في نفس الوقت خلال الركود، مما يخلق خسائر مترابطة."}},
+{en:"Expected loss is calculated using the formula:",ar:"تُحسب الخسارة المتوقعة باستخدام الصيغة:",options:[{en:"E(L) = Σ P·L",ar:"E(L) = Σ P·L"},{en:"E(L) = P + L",ar:"E(L) = P + L"},{en:"E(L) = P - L",ar:"E(L) = P - L"},{en:"E(L) = P / L",ar:"E(L) = P / L"}],correct:0,explanation:{en:"Expected loss formula: E(L) = Σ P·L, where P is probability and L is loss amount for each outcome.",ar:"صيغة الخسارة المتوقعة: E(L) = Σ P·L، حيث P هو الاحتمال و L هو مبلغ الخسارة لكل نتيجة."}},
+{en:"A noninsurance transfer of risk includes:",ar:"النقل غير التأميني للخطر يشمل:",options:[{en:"Hold-harmless clause in a contract",ar:"شرط عدم المسؤولية في العقد"},{en:"Purchasing an insurance policy",ar:"شراء وثيقة تأمين"},{en:"Paying government taxes",ar:"دفع الضرائب الحكومية"},{en:"Saving money in a bank",ar:"توفير المال في البنك"}],correct:0,explanation:{en:"Noninsurance transfers include: hold-harmless clauses in contracts, hedging through futures, and incorporation of a business firm.",ar:"النقل غير التأميني يشمل: شروط عدم المسؤولية في العقود، التحوط عبر العقود الآجلة، ودمج شركة تجارية."}},
+{en:"Self-insurance is best described as:",ar:"يُوصف التأمين الذاتي بأنه:",options:[{en:"A special form of planned retention by which part or all of a loss exposure is retained",ar:"شكل خاص من الاحتفاظ المخطط حيث يتم الاحتفاظ بجزء أو كل تعرض الخسارة"},{en:"Buying insurance from a government program",ar:"شراء التأمين من برنامج حكومي"},{en:"Relying solely on luck",ar:"الاعتماد على الحظ فقط"},{en:"Avoiding all risks completely",ar:"تجنب كل المخاطر بالكامل"}],correct:0,explanation:{en:"Self-insurance is a special form of planned retention by which part or all of a given loss exposure is retained by the firm.",ar:"التأمين الذاتي هو شكل خاص من الاحتفاظ المخطط حيث يتم الاحتفاظ بجزء أو كل تعرض خسارة معين من قبل الشركة."}},
+{en:"Moral hazard in insurance leads to:",ar:"الخطر الأخلاقي في التأمين يؤدي إلى:",options:[{en:"Higher claims and higher premiums for all insured",ar:"مطالبات أعلى وأقساط أعلى لجميع المؤمن عليهم"},{en:"Lower premiums for everyone",ar:"أقساط أقل للجميع"},{en:"No impact on insurance costs",ar:"لا تأثير على تكاليف التأمين"},{en:"Better risk management",ar:"إدارة مخاطر أفضل"}],correct:0,explanation:{en:"Moral hazard (fraudulent/inflated claims) increases actual claims, which forces insurers to raise premiums for all policyholders.",ar:"الخطر الأخلاقي (المطالبات الاحتيالية/المبالغ فيها) يزيد المطالبات الفعلية، مما يجبر شركات التأمين على رفع الأقساط لجميع حملة الوثائق."}},
+{en:"The adverse selection death spiral occurs when:",ar:"يحدث دوامة الموت بالاختيار المعاكس عندما:",options:[{en:"Premiums rise, low-risk people leave, pool becomes riskier, premiums rise again",ar:"ترتفع الأقساط، يغادر ذوو الخطر المنخفض، يصبح المجمع أكثر خطورة، ترتفع الأقساط مرة أخرى"},{en:"Premiums decrease and more people buy insurance",ar:"تنخفض الأقساط ويشترى المزيد من الناس التأمين"},{en:"All risks are perfectly diversified",ar:"جميع المخاطر متنوعة بشكل مثالي"},{en:"Government mandates universal coverage",ar:"تفرض الحكومة تغطية شاملة"}],correct:0,explanation:{en:"The death spiral: as premiums rise, more low-risk people leave, the pool becomes riskier, and premiums rise again in a vicious cycle.",ar:"دوامة الموت: مع ارتفاع الأقساط، يغادر المزيد من ذوي الخطر المنخفض، يصبح المجمع أكثر خطورة، وترتفع الأقساط مرة أخرى في حلقة مفرغة."}},
+{en:"Workers' compensation premium is calculated based on:",ar:"يُحسب قسط تعويضات العمال بناءً على:",options:[{en:"Payroll and rate per $100 of payroll",ar:"الرواتب ومعدل لكل 100$ من الرواتب"},{en:"Number of employees only",ar:"عدد الموظفين فقط"},{en:"Company revenue",ar:"إيرادات الشركة"},{en:"Building value",ar:"قيمة المبنى"}],correct:0,explanation:{en:"Workers' compensation premium = (Payroll / 100) × Rate per $100 of payroll.",ar:"قسط تعويضات العمال = (الرواتب / 100) × معدل لكل 100$ من الرواتب."}},
+{en:"Social insurance programs include:",ar:"تشمل برامج التأمين الاجتماعي:",options:[{en:"Social Security and Medicare",ar:"الضمان الاجتماعي والرعاية الطبية"},{en:"Private auto insurance only",ar:"تأمين السيارات الخاص فقط"},{en:"Gambling losses",ar:"خسائر المقامرة"},{en:"Corporate hedging",ar:"التحوط المؤسسي"}],correct:0,explanation:{en:"Major social insurance programs include Social Security, Medicare, unemployment insurance, and workers' compensation.",ar:"تشمل برامج التأمين الاجتماعي الرئيسية: الضمان الاجتماعي، الرعاية الطبية، تأمين البطالة، وتعويضات العمال."}},
+{en:"A home worth $200,000 with 0.5% fire chance has expected loss of:",ar:"منزل بقيمة 200,000$ باحتمال حريق 0.5% له خسارة متوقعة قدرها:",options:[{en:"$1,000",ar:"1,000$"},{en:"$10,000",ar:"10,000$"},{en:"$100",ar:"100$"},{en:"$200,000",ar:"200,000$"}],correct:0,explanation:{en:"Expected loss = 0.5% × $200,000 = 0.005 × 200,000 = $1,000.",ar:"الخسارة المتوقعة = 0.5% × 200,000$ = 0.005 × 200,000 = 1,000$."}}
+],
+scenario: [
+{en:"Two business owners own identical buildings valued at $50,000. There is a 10% chance each building will be destroyed. What is the expected loss per owner?",ar:"يمتلك اثنان من أصحاب الأعمال مبنيين متطابقين بقيمة 50,000$. هناك احتمال 10% أن يُدمر كل مبنى. ما هي الخسارة المتوقعة لكل مالك؟",scenario:"Pooling Example - Two Buildings",options:[{en:"$5,000",ar:"5,000$"},{en:"$50,000",ar:"50,000$"},{en:"$15,000",ar:"15,000$"},{en:"$25,000",ar:"25,000$"}],correct:0,explanation:{en:"Expected loss = 0.90 × $0 + 0.10 × $50,000 = $5,000 per owner.",ar:"الخسارة المتوقعة = 0.90 × 0$ + 0.10 × 50,000$ = 5,000$ لكل مالك."}},
+{en:"In the same scenario, if the two owners pool their exposures, what is the standard deviation of each owner's share?",ar:"في نفس السيناريو، إذا جمع المالكان تعرضاتهما، ما هو الانحراف المعياري لحصة كل مالك؟",scenario:"Pooling with Two Individuals",options:[{en:"$10,607",ar:"10,607$"},{en:"$15,000",ar:"15,000$"},{en:"$5,000",ar:"5,000$"},{en:"$25,000",ar:"25,000$"}],correct:0,explanation:{en:"With pooling of 2 owners: SD = $15,000/√2 ≈ $10,607. The expected loss remains $5,000 but risk (SD) decreases.",ar:"مع تجميع مالكين: SD = 15,000$/√2 ≈ 10,607$. الخسارة المتوقعة تبقى 5,000$ لكن الخطر (SD) ينخفض."}},
+{en:"A small town has 500 homes. Historically, 2 homes per year experience fire loss averaging $80,000. What is the total expected annual claim cost?",ar:"بلدة صغيرة لديها 500 منزل. تاريخياً، 2 منزل سنوياً يتعرضان لخسارة حريق بمتوسط 80,000$. ما هي تكلفة المطالبات السنوية المتوقعة الإجمالية؟",scenario:"Small Town Fire Insurance",options:[{en:"$160,000",ar:"160,000$"},{en:"$80,000",ar:"80,000$"},{en:"$320",ar:"320$"},{en:"$40,000,000",ar:"40,000,000$"}],correct:0,explanation:{en:"Total expected claims = 2 × $80,000 = $160,000 per year.",ar:"إجمالي المطالبات المتوقعة = 2 × 80,000$ = 160,000$ سنوياً."}},
+{en:"For the same town, if administrative expenses are 20% of premium, what is the break-even premium per home?",ar:"لنفس البلدة، إذا كانت المصاريف الإدارية 20% من القسط، ما هو القسط التعادلي لكل منزل؟",scenario:"Break-even Premium Calculation",options:[{en:"$400",ar:"400$"},{en:"$320",ar:"320$"},{en:"$160",ar:"160$"},{en:"$500",ar:"500$"}],correct:0,explanation:{en:"Expected loss per home = $160,000/500 = $320. Break-even: P = 320 + 0.20P → 0.80P = 320 → P = $400.",ar:"الخسارة المتوقعة لكل منزل = 160,000$/500 = 320$. التعادل: P = 320 + 0.20P → 0.80P = 320 → P = 400$."}},
+{en:"A private insurer considers offering unemployment insurance to 10,000 workers. Benefit is $10,000 per worker. Normal unemployment is 6%. What are expected annual claims?",ar:"تفكر شركة تأمين خاصة في تقديم تأمين بطالة لـ 10,000 عامل. الفائدة 10,000$ لكل عامل. البطالة العادية 6%. ما هي المطالبات السنوية المتوقعة؟",scenario:"Unemployment Insurance",options:[{en:"$6,000,000",ar:"6,000,000$"},{en:"$600,000",ar:"600,000$"},{en:"$10,000,000",ar:"10,000,000$"},{en:"$60,000",ar:"60,000$"}],correct:0,explanation:{en:"Normal year claims = 10,000 × 0.06 × $10,000 = $6,000,000.",ar:"مطالبات السنة العادية = 10,000 × 0.06 × 10,000$ = 6,000,000$."}},
+{en:"An insurer offers health policy at $400/month. 700 low-risk (expected claims $200) and 300 high-risk (expected claims $800). What is average expected claim if everyone enrolls?",ar:"تعرض شركة تأمين وثيقة صحية بـ 400$/شهر. 700 منخفضي الخطر (مطالبات متوقعة 200$) و 300 عاليي الخطر (مطالبات متوقعة 800$). ما هو متوسط المطالبة المتوقعة إذا سجل الجميع؟",scenario:"Health Policy Adverse Selection",options:[{en:"$380",ar:"380$"},{en:"$400",ar:"400$"},{en:"$500",ar:"500$"},{en:"$200",ar:"200$"}],correct:0,explanation:{en:"Average = [700(200) + 300(800)]/1,000 = [140,000 + 240,000]/1,000 = $380.",ar:"المتوسط = [700(200) + 300(800)]/1,000 = [140,000 + 240,000]/1,000 = 380$."}},
+{en:"A farmer expects 10,000 bushels of wheat. Futures price = $5.50. If spot at harvest = $4.00, what is total revenue with hedging?",ar:"يتوقع مزارع 10,000 بوشل من القمح. سعر العقود الآجلة = 5.50$. إذا كان السعر الفوري عند الحصاد = 4.00$، ما هو الإيراد الإجمالي مع التحوط؟",scenario:"Wheat Farmer Hedging",options:[{en:"$55,000",ar:"55,000$"},{en:"$40,000",ar:"40,000$"},{en:"$70,000",ar:"70,000$"},{en:"$15,000",ar:"15,000$"}],correct:0,explanation:{en:"Crop revenue = $4 × 10,000 = $40,000. Futures gain = ($5.50 - $4.00) × 10,000 = $15,000. Total = $55,000.",ar:"إيراد المحصول = 4$ × 10,000 = 40,000$. ربح العقود الآجلة = (5.50$ - 4.00$) × 10,000 = 15,000$. الإجمالي = 55,000$."}},
+{en:"Workers' compensation: Payroll = $2,000,000. Rate = $0.50 per $100 of payroll. What is the premium?",ar:"تعويضات العمال: الرواتب = 2,000,000$. المعدل = 0.50$ لكل 100$ من الرواتب. ما هو القسط؟",scenario:"Workers Compensation Premium",options:[{en:"$10,000",ar:"10,000$"},{en:"$1,000,000",ar:"1,000,000$"},{en:"$2,000",ar:"2,000$"},{en:"$100,000",ar:"100,000$"}],correct:0,explanation:{en:"Premium = ($2,000,000/100) × $0.50 = 20,000 × 0.50 = $10,000.",ar:"القسط = (2,000,000$/100) × 0.50$ = 20,000 × 0.50 = 10,000$."}},
+{en:"A town has 1,000 insured homes. Expected claims $500,000. Expense loading 20%. Due to moral hazard, claims rise 10% to $550,000. What is new break-even premium per home?",ar:"بلدة لديها 1,000 منزل مؤمّن. المطالبات المتوقعة 500,000$. تحميل المصاريف 20%. بسبب الخطر الأخلاقي، ترتفع المطالبات 10% إلى 550,000$. ما هو القسط التعادلي الجديد لكل منزل؟",scenario:"Moral Hazard Impact",options:[{en:"$687.50",ar:"687.50$"},{en:"$625",ar:"625$"},{en:"$550",ar:"550$"},{en:"$750",ar:"750$"}],correct:0,explanation:{en:"New claims = $550,000. P = 550,000 + 0.20P → 0.80P = 550,000 → P = $687,500. Per home = $687.50.",ar:"مطالبات جديدة = 550,000$. P = 550,000 + 0.20P → 0.80P = 550,000 → P = 687,500$. لكل منزل = 687.50$."}},
+{en:"An insurer has incurred losses of $1,050,000 and earned premiums of $1,500,000. What is the loss ratio?",ar:"شركة تأمين لديها خسائر متكبدة 1,050,000$ وأقساط مكتسبة 1,500,000$. ما هي نسبة الخسارة؟",scenario:"Loss Ratio Calculation",options:[{en:"70%",ar:"70%"},{en:"75%",ar:"75%"},{en:"60%",ar:"60%"},{en:"80%",ar:"80%"}],correct:0,explanation:{en:"Loss ratio = $1,050,000 / $1,500,000 = 0.70 = 70%.",ar:"نسبة الخسارة = 1,050,000$ / 1,500,000$ = 0.70 = 70%."}}
+],
+classification: [
+{en:"Classify: Fire damage to a building.",ar:"صنّف: أضرار الحريق لمبنى.",options:[{en:"Meets all 6 requirements of ideally insurable risk",ar:"يستوفي جميع متطلبات الخطر القابل للتأمين بشكل مثالي الستة"},{en:"Fails the large number requirement",ar:"يفشل في متطلب العدد الكبير"},{en:"Fails the calculable chance requirement",ar:"يفشل في متطلب الاحتمال القابل للحساب"},{en:"Cannot be insured at all",ar:"لا يمكن تأمينه إطلاقاً"}],correct:0,explanation:{en:"Fire satisfies all 6 requirements: large exposure units, accidental, determinable, no catastrophic loss (with reinsurance), calculable, economically feasible premium.",ar:"الحريق يستوفي جميع المتطلبات الستة: وحدات تعرض كبيرة، عرضي، قابل للتحديد، لا خسارة كارثية (مع إعادة التأمين)، قابل للحساب، قسط اقتصادي ممكن."}},
+{en:"Classify: Unemployment during a severe recession.",ar:"صنّف: البطالة خلال ركود حاد.",options:[{en:"Violates 'no catastrophic loss' requirement",ar:"ينتهك متطلب 'لا خسارة كارثية'"},{en:"Perfectly insurable risk",ar:"خطر قابل للتأمين بشكل مثالي"},{en:"Pure risk only",ar:"خطر بحت فقط"},{en:"Diversifiable risk",ar:"خطر قابل للتنويع"}],correct:0,explanation:{en:"Unemployment violates 'no catastrophic loss' because many workers lose jobs simultaneously during recession, creating correlated losses.",ar:"تنتهك البطالة 'لا خسارة كارثية' لأن العديد من العمال يفقدون وظائفهم في نفس الوقت خلال الركود، مما يخلق خسائر مترابطة."}},
+{en:"Classify: SD for pool of 10 identical risks where individual SD = $15,000.",ar:"صنّف: SD لمجمع من 10 مخاطر متطابقة حيث SD الفردي = 15,000$.",options:[{en:"$4,743",ar:"4,743$"},{en:"$15,000",ar:"15,000$"},{en:"$1,500",ar:"1,500$"},{en:"$150,000",ar:"150,000$"}],correct:0,explanation:{en:"SD(pool) = SD(individual)/√n = $15,000/√10 = $15,000/3.162 ≈ $4,743.",ar:"SD(المجمع) = SD(الفرد)/√n = 15,000$/√10 = 15,000$/3.162 ≈ 4,743$."}},
+{en:"Classify: Expected claims $2,000,000, expense loading 18%, profit loading 7%. Break-even premium?",ar:"صنّف: مطالبات متوقعة 2,000,000$، تحميل مصاريف 18%، تحميل ربح 7%. القسط التعادلي؟",options:[{en:"$2,666,667",ar:"2,666,667$"},{en:"$2,000,000",ar:"2,000,000$"},{en:"$2,500,000",ar:"2,500,000$"},{en:"$1,500,000",ar:"1,500,000$"}],correct:0,explanation:{en:"P = $2,000,000/(1-0.18-0.07) = $2,000,000/0.75 = $2,666,667.",ar:"P = 2,000,000$/(1-0.18-0.07) = 2,000,000$/0.75 = 2,666,667$."}},
+{en:"Classify: Buying a lottery ticket.",ar:"صنّف: شراء تذكرة يانصيب.",options:[{en:"Creates new speculative risk (gambling)",ar:"يخلق خطراً مضاربياً جديداً (مقامرة)"},{en:"Transfers existing pure risk",ar:"ينقل خطراً بحتاً موجوداً"},{en:"Form of insurance",ar:"شكل من أشكال التأمين"},{en:"Risk reduction technique",ar:"تقنية تقليل الخطر"}],correct:0,explanation:{en:"Gambling creates a new speculative risk where none existed before, unlike insurance which transfers existing pure risk.",ar:"المقامرة تخلق خطراً مضاربياً جديداً حيث لم يكن موجوداً من قبل، على عكس التأمين الذي ينقل خطراً بحتاً موجوداً."}},
+{en:"Classify: Farmer using futures contract to lock wheat price.",ar:"صنّف: مزارع يستخدم عقد آجل لتثبيت سعر القمح.",options:[{en:"Hedging - transfers price risk to speculator",ar:"تحوط - ينقل خطر السعر إلى مضارب"},{en:"Insurance transfer",ar:"نقل تأميني"},{en:"Risk avoidance",ar:"تجنب الخطر"},{en:"Gambling",ar:"مقامرة"}],correct:0,explanation:{en:"Hedging transfers the risk of unfavorable price fluctuations to a speculator through futures contracts.",ar:"التحوط ينقل خطر تقلبات الأسعار غير المواتية إلى مضارب عبر العقود الآجلة."}},
+{en:"Classify: 'Reduction of worry and fear' for insured individuals.",ar:"صنّف: 'تقليل القلق والخوف' للأفراد المؤمن عليهم.",options:[{en:"Social benefit of insurance",ar:"فائدة اجتماعية للتأمين"},{en:"Social cost of insurance",ar:"تكلفة اجتماعية للتأمين"},{en:"Adverse selection effect",ar:"تأثير الاختيار المعاكس"},{en:"Moral hazard consequence",ar:"نتيجة الخطر الأخلاقي"}],correct:0,explanation:{en:"Reduction of worry and fear is a social benefit of insurance, as it provides peace of mind and financial security.",ar:"تقليل القلق والخوف هو فائدة اجتماعية للتأمين، لأنه يوفر راحة البال والأمن المالي."}},
+{en:"Classify: Fraudulent claims increasing premiums for all.",ar:"صنّف: المطالبات الاحتيالية تزيد الأقساط للجميع.",options:[{en:"Social cost of insurance",ar:"تكلفة اجتماعية للتأمين"},{en:"Social benefit of insurance",ar:"فائدة اجتماعية للتأمين"},{en:"Law of large numbers effect",ar:"تأثير قانون الأعداد الكبيرة"},{en:"Pooling benefit",ar:"فائدة التجميع"}],correct:0,explanation:{en:"Fraudulent and inflated claims are social costs of insurance that lead to higher premiums for all policyholders.",ar:"المطالبات الاحتيالية والمبالغ فيها هي تكاليف اجتماعية للتأمين تؤدي إلى أقساط أعلى لجميع حملة الوثائق."}},
+{en:"Classify: Expected claims $480,000, expense loading 20%. Dollar amount of expenses?",ar:"صنّف: مطالبات متوقعة 480,000$، تحميل مصاريف 20%. مبلغ المصاريف بالدولار؟",options:[{en:"$120,000",ar:"120,000$"},{en:"$96,000",ar:"96,000$"},{en:"$600,000",ar:"600,000$"},{en:"$480,000",ar:"480,000$"}],correct:0,explanation:{en:"P = $480,000/(1-0.20) = $600,000. Expenses = 0.20 × $600,000 = $120,000.",ar:"P = 480,000$/(1-0.20) = 600,000$. المصاريف = 0.20 × 600,000$ = 120,000$."}},
+{en:"Classify: High-risk individuals disproportionately seeking insurance.",ar:"صنّف: الأفراد عاليو الخطر يبحثون عن التأمين بشكل غير متناسب.",options:[{en:"Adverse selection",ar:"اختيار معاكس"},{en:"Moral hazard",ar:"خطر أخلاقي"},{en:"Law of large numbers",ar:"قانون الأعداد الكبيرة"},{en:"Pooling technique",ar:"تقنية التجميع"}],correct:0,explanation:{en:"Adverse selection is the tendency of high-risk persons to seek insurance at standard rates, leading to unprofitable business.",ar:"الاختيار المعاكس هو ميل الأشخاص عاليي الخطر للبحث عن التأمين بمعدلات قياسية، مما يؤدي إلى أعمال غير مربحة."}}
+],
+truefalse: [
+{en:"Insurance and gambling are essentially the same thing.",ar:"التأمين والمقامرة هما نفس الشيء أساساً.",options:[{en:"True",ar:"صحيح"},{en:"False",ar:"خطأ"}],correct:1,explanation:{en:"False! Insurance transfers existing pure risk and reduces overall risk, while gambling creates new speculative risk where none existed.",ar:"خطأ! التأمين ينقل خطراً بحتاً موجوداً ويقلل الخطر الإجمالي، بينما المقامرة تخلق خطراً مضاربياً جديداً حيث لم يكن موجوداً."}},
+{en:"The Law of Large Numbers helps reduce risk through pooling.",ar:"قانون الأعداد الكبيرة يساعد في تقليل الخطر من خلال التجميع.",options:[{en:"True",ar:"صحيح"},{en:"False",ar:"خطأ"}],correct:0,explanation:{en:"True! As the number of exposure units increases, the standard deviation (risk) decreases while expected loss remains constant.",ar:"صحيح! مع زيادة عدد وحدات التعرض، ينخفض الانحراف المعياري (الخطر) بينما تبقى الخسارة المتوقعة ثابتة."}},
+{en:"Unemployment meets all six requirements of an ideally insurable risk.",ar:"تستوفي البطالة جميع متطلبات الخطر القابل للتأمين بشكل مثالي الستة.",options:[{en:"True",ar:"صحيح"},{en:"False",ar:"خطأ"}],correct:1,explanation:{en:"False! Unemployment violates the 'no catastrophic loss' requirement because many workers lose jobs simultaneously during recessions.",ar:"خطأ! تنتهك البطالة متطلب 'لا خسارة كارثية' لأن العديد من العمال يفقدون وظائفهم في نفس الوقت خلال فترات الركود."}},
+{en:"Adverse selection can lead to a death spiral where premiums continuously rise.",ar:"يمكن أن يؤدي الاختيار المعاكس إلى دوامة موت حيث ترتفع الأقساط باستمرار.",options:[{en:"True",ar:"صحيح"},{en:"False",ar:"خطأ"}],correct:0,explanation:{en:"True! As premiums rise, low-risk people leave, the pool becomes riskier, and premiums rise again in a vicious cycle.",ar:"صحيح! مع ارتفاع الأقساط، يغادر ذوو الخطر المنخفض، يصبح المجمع أكثر خطورة، وترتفع الأقساط مرة أخرى في حلقة مفرغة."}},
+{en:"Pooling reduces the expected loss for each participant.",ar:"يقلل التجميع من الخسارة المتوقعة لكل مشارك.",options:[{en:"True",ar:"صحيح"},{en:"False",ar:"خطأ"}],correct:1,explanation:{en:"False! Pooling reduces risk (standard deviation) but the expected loss remains the same regardless of pool size.",ar:"خطأ! التجميع يقلل الخطر (الانحراف المعياري) لكن الخسارة المتوقعة تبقى نفسها بغض النظر عن حجم المجمع."}}
+]
+};
+
+let state = {playerName:'',questions:[],answers:{},stopwatch:null,elapsedSeconds:0,submitted:false,scoreSent:false,currentFilter:'all',showTranslation:true};
+
+function showConcepts(){document.getElementById('conceptsModal').classList.remove('hidden');}
+function closeConcepts(){document.getElementById('conceptsModal').classList.add('hidden');}
+
+function buildQuestions(){
+let q = [];
+allQuestions.mcq.forEach(function(item,i){q.push({en:item.en,ar:item.ar,options:item.options,correct:item.correct,explanation:item.explanation,category:'mcq',typeLabel:'MCQ',globalIndex:i});});
+allQuestions.scenario.forEach(function(item,i){q.push({en:item.en,ar:item.ar,options:item.options,correct:item.correct,explanation:item.explanation,scenario:item.scenario,category:'scenario',typeLabel:'SCENARIO',globalIndex:allQuestions.mcq.length+i});});
+allQuestions.classification.forEach(function(item,i){q.push({en:item.en,ar:item.ar,options:item.options,correct:item.correct,explanation:item.explanation,category:'classification',typeLabel:'CLASSIFY',globalIndex:allQuestions.mcq.length+allQuestions.scenario.length+i});});
+allQuestions.truefalse.forEach(function(item,i){q.push({en:item.en,ar:item.ar,options:item.options,correct:item.correct,explanation:item.explanation,category:'truefalse',typeLabel:'T/F',globalIndex:allQuestions.mcq.length+allQuestions.scenario.length+allQuestions.classification.length+i});});
+return q;
+}
+
+function startQuiz(){
+var name = document.getElementById('playerName').value.trim() || 'Learner';
+state.playerName = name;
+state.questions = buildQuestions();
+state.answers = {};
+state.elapsedSeconds = 0;
+state.submitted = false;
+state.currentFilter = 'all';
+state.showTranslation = true;
+document.getElementById('headerPlayerName').textContent = name;
+document.getElementById('welcomeScreen').classList.add('hidden');
+document.getElementById('quizScreen').classList.remove('hidden');
+document.getElementById('totalQuestions').textContent = state.questions.length;
+updateTranslationToggleUI();
+renderQuestions();
+startStopwatch();
+window.scrollTo(0,0);
+}
+
+function startStopwatch(){clearInterval(state.stopwatch);updateStopwatchDisplay();state.stopwatch = setInterval(function(){state.elapsedSeconds++;updateStopwatchDisplay();},1000);}
+function updateStopwatchDisplay(){var m = Math.floor(state.elapsedSeconds/60);var s = state.elapsedSeconds%60;document.getElementById('stopwatchDisplay').textContent = String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');}
+function formatTime(sec){var m = Math.floor(sec/60);var s = sec%60;return m+':'+String(s).padStart(2,'0');}
+
+function toggleGlobalTranslation(){
+state.showTranslation = !state.showTranslation;
+updateTranslationToggleUI();
+updateTranslationVisibility();
+}
+
+function updateTranslationToggleUI(){
+var btn = document.getElementById('globalTranslationToggle');
+var txt = document.getElementById('translationToggleText');
+if(state.showTranslation){
+btn.classList.add('active');
+txt.textContent = 'Hide Translation';
+} else {
+btn.classList.remove('active');
+txt.textContent = 'Show Translation';
+}
+}
+
+function updateTranslationVisibility(){
+var arElements = document.querySelectorAll('.arabic-content');
+for(var i=0;i<arElements.length;i++){
+if(state.showTranslation){
+arElements[i].classList.remove('hidden');
+arElements[i].classList.add('translation-visible');
+} else {
+arElements[i].classList.add('hidden');
+arElements[i].classList.remove('translation-visible');
+}
+}
+}
+
+function filterCategory(cat){
+state.currentFilter = cat;
+var btns = document.querySelectorAll('.filter-btn');
+for(var i=0;i<btns.length;i++){if(btns[i].dataset.filter === cat){btns[i].classList.add('active');}else{btns[i].classList.remove('active');}}
+var cards = document.querySelectorAll('.question-card');
+var dividers = document.querySelectorAll('.category-divider');
+for(var i=0;i<cards.length;i++){if(cat === 'all' || cards[i].dataset.category === cat){cards[i].classList.remove('hidden-q');}else{cards[i].classList.add('hidden-q');}}
+for(var i=0;i<dividers.length;i++){if(cat === 'all' || dividers[i].dataset.category === cat){dividers[i].classList.remove('hidden-q');}else{dividers[i].classList.add('hidden-q');}}
+setTimeout(function(){var firstVisible = document.querySelector('.question-card:not(.hidden-q)');if(firstVisible){var offset = 150;var top = firstVisible.getBoundingClientRect().top + window.pageYOffset - offset;window.scrollTo({top:top, behavior:'smooth'});}},100);
+}
+
+function renderQuestions(){
+var container = document.getElementById('questionsContainer');
+container.innerHTML = '';
+var currentCategory = '';
+var sectionTitles = {
+mcq:{title:'Multiple Choice Questions',icon:'list-check',color:'blue',count:allQuestions.mcq.length},
+scenario:{title:'Scenario-Based Questions',icon:'file-lines',color:'purple',count:allQuestions.scenario.length},
+classification:{title:'Classification Questions',icon:'layer-group',color:'amber',count:allQuestions.classification.length},
+truefalse:{title:'True / False Questions',icon:'check-double',color:'green',count:allQuestions.truefalse.length}
+};
+
+state.questions.forEach(function(q,idx){
+if(q.category !== currentCategory){
+currentCategory = q.category;
+var sec = sectionTitles[q.category];
+var divider = document.createElement('div');
+divider.className = 'category-divider py-3';
+divider.dataset.category = q.category;
+divider.innerHTML = '<div class="glass-strong rounded-2xl p-4 flex items-center justify-between flex-wrap gap-2"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-'+sec.color+'-500/20 flex items-center justify-center"><i class="fas fa-'+sec.icon+' text-'+sec.color+'-400"></i></div><div><h3 class="font-bold text-'+sec.color+'-300">'+sec.title+'</h3><p class="text-xs text-slate-400">'+sec.count+' questions</p></div></div><button class="btn btn-outline px-3 py-1.5 rounded-lg text-xs filter-cat-btn" data-cat="'+q.category+'"><i class="fas fa-filter mr-1"></i>Show only this</button></div>';
+container.appendChild(divider);
+}
+
+var card = document.createElement('div');
+card.className = 'question-card glass-strong rounded-2xl p-5 md:p-6 fade-in';
+card.id = 'qcard-'+idx;
+card.dataset.category = q.category;
+card.dataset.index = idx;
+
+var userAnswer = state.answers[idx];
+var isAnswered = userAnswer !== undefined;
+var isCorrect = isAnswered && userAnswer === q.correct;
+var statusClass = '';
+if(isAnswered) statusClass = isCorrect ? 'answered-correct' : 'answered-wrong';
+
+var letters = ['A','B','C','D'];
+var optionsHtml = '';
+q.options.forEach(function(opt,i){
+var optClass = 'option-btn glass rounded-xl p-3 md:p-4 w-full border border-white/10';
+if(isAnswered){
+optClass += ' disabled';
+if(i === q.correct) optClass += ' correct';
+else if(i === userAnswer && !isCorrect) optClass += ' wrong';
+if(i === userAnswer) optClass += ' selected';
+}
+optionsHtml += '<button class="'+optClass+'" data-opt="'+i+'" data-qidx="'+idx+'"><div class="flex items-start gap-3"><span class="letter w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-sm font-bold text-slate-300 flex-shrink-0">'+letters[i]+'</span><div class="flex-1 text-left option-bilingual"><div class="option-en">'+opt.en+'</div><div class="option-ar arabic-content'+(state.showTranslation?'':' hidden')+'">'+opt.ar+'</div></div></div></button>';
+});
+
+var scenarioHtml = q.scenario ? '<div class="glass rounded-xl p-3 mb-4 border-r-4 border-amber-500"><p class="text-sm text-amber-200"><i class="fas fa-quote-right mr-2 text-amber-400"></i><strong>Scenario:</strong> '+q.scenario+'</p></div>' : '';
+
+var statusBadge = isAnswered ? (isCorrect ? '<span class="badge bg-green-500/20 text-green-300 text-xs"><i class="fas fa-check-circle"></i> Correct</span>' : '<span class="badge bg-red-500/20 text-red-300 text-xs"><i class="fas fa-times-circle"></i> Wrong</span>') : '<span class="badge bg-slate-500/20 text-slate-300 text-xs"><i class="fas fa-circle"></i> Unanswered</span>';
+
+card.className += ' '+statusClass;
+card.innerHTML = '<div class="flex items-start justify-between mb-3 flex-wrap gap-2"><div class="flex items-center gap-2 flex-wrap"><span class="text-xs font-bold text-slate-500">#'+(q.globalIndex+1)+'</span><span class="badge bg-'+sectionTitles[q.category].color+'-500/20 text-'+sectionTitles[q.category].color+'-300 text-xs">'+q.typeLabel+'</span>'+statusBadge+'</div></div><div class="mb-4 bilingual-q"><div class="bilingual-en">'+q.en+'</div><div class="bilingual-ar arabic-content'+(state.showTranslation?'':' hidden')+'">'+q.ar+'</div></div>'+scenarioHtml+'<div class="space-y-2 mb-4">'+optionsHtml+'</div><div class="flex flex-wrap gap-2"><button class="btn btn-purple px-4 py-2 rounded-lg text-xs explanation-toggle-btn" data-idx="'+idx+'"><i class="fas fa-lightbulb mr-1"></i>Show Answer / Explanation</button>'+(isAnswered ? '<button class="btn btn-outline px-4 py-2 rounded-lg text-xs clear-btn" data-idx="'+idx+'"><i class="fas fa-eraser mr-1"></i>Clear</button>' : '')+'</div><div id="exp-'+idx+'" class="hidden mt-3 glass rounded-xl p-4 border-r-4 border-purple-500 explanation-box"><h5 class="font-bold text-purple-300 mb-2 text-sm"><i class="fas fa-lightbulb mr-2"></i>Explanation</h5><div class="mb-3"><p class="text-sm text-white leading-relaxed mb-2">'+q.explanation.en+'</p></div><div class="bilingual-ar arabic-content'+(state.showTranslation?'':' hidden')+'" style="padding:10px 14px;background:rgba(139,92,246,.06);border-radius:10px;border-right:3px solid #8b5cf6">'+q.explanation.ar+'</div></div>';
+container.appendChild(card);
+});
+
+var optBtns = document.querySelectorAll('.option-btn');
+for(var i=0;i<optBtns.length;i++){optBtns[i].addEventListener('click', function(){selectAnswer(parseInt(this.dataset.qidx), parseInt(this.dataset.opt));});}
+var expBtns = document.querySelectorAll('.explanation-toggle-btn');
+for(var i=0;i<expBtns.length;i++){expBtns[i].addEventListener('click', function(){toggleExplanation(parseInt(this.dataset.idx));});}
+var clearBtns = document.querySelectorAll('.clear-btn');
+for(var i=0;i<clearBtns.length;i++){clearBtns[i].addEventListener('click', function(){clearAnswer(parseInt(this.dataset.idx));});}
+var filterCatBtns = document.querySelectorAll('.filter-cat-btn');
+for(var i=0;i<filterCatBtns.length;i++){filterCatBtns[i].addEventListener('click', function(){filterCategory(this.dataset.cat);});}
+
+updateProgress();
+}
+
+function selectAnswer(qIdx,optIdx){if(state.submitted) return;if(state.answers[qIdx] === optIdx) return;state.answers[qIdx] = optIdx;renderQuestions();if(state.currentFilter !== 'all') filterCategory(state.currentFilter);}
+function clearAnswer(qIdx){if(state.submitted) return;delete state.answers[qIdx];renderQuestions();if(state.currentFilter !== 'all') filterCategory(state.currentFilter);}
+function toggleExplanation(qIdx){var el = document.getElementById('exp-'+qIdx);if(el) el.classList.toggle('hidden');}
+
+function updateProgress(){
+var total = state.questions.length;
+var answered = Object.keys(state.answers).length;
+var pct = Math.round((answered/total)*100);
+document.getElementById('progressBar').style.width = pct+'%';
+document.getElementById('answeredCount').textContent = answered+' answered';
+document.getElementById('progressPercent').textContent = pct+'%';
+var score = 0;
+var keys = Object.keys(state.answers);
+for(var i=0;i<keys.length;i++){var idx = keys[i];if(state.questions[idx].correct === state.answers[idx]) score++;}
+document.getElementById('scoreDisplay').textContent = score;
+}
+
+function submitQuiz(){var total = state.questions.length;var answered = Object.keys(state.answers).length;if(answered < total){if(!confirm('You have answered '+answered+' out of '+total+' questions. Submit anyway?')) return;}clearInterval(state.stopwatch);state.submitted = true;showResults();}
+
+function showResults(){
+document.getElementById('quizScreen').classList.add('hidden');
+document.getElementById('resultsScreen').classList.remove('hidden');
+var total = state.questions.length;
+var score = 0;
+var catScores = {mcq:{c:0,t:allQuestions.mcq.length},scenario:{c:0,t:allQuestions.scenario.length},classification:{c:0,t:allQuestions.classification.length},truefalse:{c:0,t:allQuestions.truefalse.length}};
+var keys = Object.keys(state.answers);
+for(var i=0;i<keys.length;i++){var idx = keys[i];var q = state.questions[idx];if(q.correct === state.answers[idx]){score++;catScores[q.category].c++;}}
+var pct = Math.round((score/total)*100);
+/* 🎯 EBRA — إرسال الدرجة مرة واحدة، عند تسليم المستخدم فقط */
+if(state.submitted && !state.scoreSent && window.EBRA && window.EBRA.trackScore){
+state.scoreSent = true;
+window.EBRA.trackScore(score, total, "Risk & Insurance — Ch2-3 Quiz");
+}
+document.getElementById('resultPlayerName').textContent = state.playerName;
+document.getElementById('finalScore').textContent = score;
+document.getElementById('totalPossible').textContent = total;
+document.getElementById('percentage').textContent = pct;
+document.getElementById('correctCount').textContent = score;
+document.getElementById('wrongCount').textContent = total - score;
+document.getElementById('totalTime').textContent = formatTime(state.elapsedSeconds);
+document.getElementById('avgTime').textContent = Math.round(state.elapsedSeconds/total)+'s';
+var grade='',gradeClass='';
+if(pct>=90){grade='Excellent 🏆';gradeClass='bg-gradient-to-r from-amber-400 to-amber-600';}
+else if(pct>=75){grade='Very Good 🌟';gradeClass='bg-gradient-to-r from-blue-500 to-blue-600';}
+else if(pct>=60){grade='Good 👍';gradeClass='bg-gradient-to-r from-green-500 to-green-600';}
+else if(pct>=50){grade='Acceptable 📚';gradeClass='bg-gradient-to-r from-purple-500 to-purple-600';}
+else{grade='Needs Review ';gradeClass='bg-gradient-to-r from-red-500 to-red-600';}
+var gb = document.getElementById('gradeBadge');gb.textContent = grade;gb.className = 'inline-block text-lg px-6 py-2 mt-2 rounded-full font-bold text-white '+gradeClass;
+var breakdown = document.getElementById('categoryBreakdown');breakdown.innerHTML = '';
+var cats = [{key:'mcq',name:'MCQ Questions',color:'blue',icon:'list-check'},{key:'scenario',name:'Scenario Based',color:'purple',icon:'file-lines'},{key:'classification',name:'Classification',color:'amber',icon:'layer-group'},{key:'truefalse',name:'True / False',color:'green',icon:'check-double'}];
+cats.forEach(function(c){var s = catScores[c.key];var p = Math.round((s.c/s.t)*100);breakdown.innerHTML += '<div><div class="flex justify-between text-sm mb-1"><span class="text-slate-300"><i class="fas fa-'+c.icon+' text-'+c.color+'-400 mr-1"></i>'+c.name+'</span><span class="text-'+c.color+'-400 font-bold">'+s.c+'/'+s.t+' ('+p+'%)</span></div><div class="w-full bg-slate-800/50 rounded-full h-2 overflow-hidden"><div class="h-full rounded-full bg-'+c.color+'-500 transition-all duration-1000" style="width:'+p+'%"></div></div></div>';});
+var badges = document.getElementById('badgesContainer');badges.innerHTML = '';
+var earned = [];
+if(pct===100) earned.push({icon:'crown',name:'Perfect Score',color:'amber'});
+if(pct>=90) earned.push({icon:'trophy',name:'Excellence',color:'amber'});
+if(pct>=75) earned.push({icon:'star',name:'Outstanding',color:'blue'});
+if(pct>=60) earned.push({icon:'medal',name:'Good Performance',color:'green'});
+if(state.elapsedSeconds/total < 20) earned.push({icon:'bolt',name:'Speed Master',color:'purple'});
+if(catScores.mcq.c===20) earned.push({icon:'brain',name:'MCQ Genius',color:'blue'});
+if(catScores.scenario.c===10) earned.push({icon:'user-tie',name:'Scenario Analyst',color:'purple'});
+if(catScores.classification.c===10) earned.push({icon:'layer-group',name:'Classification Pro',color:'amber'});
+if(catScores.truefalse.c===5) earned.push({icon:'check-double',name:'T/F Master',color:'green'});
+if(earned.length===0) earned.push({icon:'book',name:'Keep Learning',color:'slate'});
+earned.forEach(function(b){badges.innerHTML += '<div class="glass rounded-xl px-4 py-3 flex items-center gap-2"><i class="fas fa-'+b.icon+' text-'+b.color+'-400 text-xl"></i><span class="text-sm font-bold text-'+b.color+'-300">'+b.name+'</span></div>';});
+window.scrollTo(0,0);
+}
+
+function reviewAnswers(){
+document.getElementById('resultsScreen').classList.add('hidden');
+document.getElementById('reviewScreen').classList.remove('hidden');
+var container = document.getElementById('reviewContainer');
+container.innerHTML = '';
+state.questions.forEach(function(q,idx){
+var userAns = state.answers[idx];
+var answered = userAns !== undefined;
+var isCorrect = answered && userAns === q.correct;
+var statusClass = answered ? (isCorrect ? 'border-green-500/30' : 'border-red-500/30') : 'border-amber-500/30';
+var statusIcon = answered ? (isCorrect ? 'fa-check-circle text-green-400' : 'fa-times-circle text-red-400') : 'fa-minus-circle text-amber-400';
+var statusText = answered ? (isCorrect ? 'Correct' : 'Wrong') : 'Skipped';
+var userText = answered ? q.options[userAns].en : 'Not answered';
+var correctText = q.options[q.correct].en;
+container.innerHTML += '<div class="glass-strong rounded-2xl p-5 border-r-4 '+statusClass+'"><div class="flex items-center justify-between mb-3 flex-wrap gap-2"><span class="text-xs text-slate-500">#'+(idx+1)+' - '+q.typeLabel+'</span><span class="flex items-center gap-1 text-sm"><i class="fas '+statusIcon+'"></i>'+statusText+'</span></div><div class="bilingual-q mb-3"><div class="bilingual-en text-sm">'+q.en+'</div><div class="bilingual-ar arabic-content">'+q.ar+'</div></div><div class="text-xs mb-2"><span class="text-slate-500">Your answer:</span> <span class="'+(isCorrect?'text-green-400':'text-red-400')+'">'+userText+'</span></div>'+(isCorrect?'':'<div class="text-xs mb-2"><span class="text-slate-500">Correct answer:</span> <span class="text-green-400">'+correctText+'</span></div>')+'<details class="mt-2"><summary class="text-xs text-purple-400 cursor-pointer hover:text-purple-300">Show explanation</summary><div class="mt-2"><p class="text-xs text-slate-300 leading-relaxed mb-2">'+q.explanation.en+'</p><div class="bilingual-ar arabic-content" style="padding:8px 12px">'+q.explanation.ar+'</div></div></details></div>';
+});
+window.scrollTo(0,0);
+}
+
+function backToResults(){document.getElementById('reviewScreen').classList.add('hidden');document.getElementById('resultsScreen').classList.remove('hidden');window.scrollTo(0,0);}
+
+function restartQuiz(){
+if(!confirm('Restart the quiz?')) return;
+clearInterval(state.stopwatch);
+state = {playerName:'',questions:[],answers:{},stopwatch:null,elapsedSeconds:0,submitted:false,scoreSent:false,currentFilter:'all',showTranslation:true};
+document.getElementById('quizScreen').classList.add('hidden');
+document.getElementById('resultsScreen').classList.add('hidden');
+document.getElementById('reviewScreen').classList.add('hidden');
+document.getElementById('welcomeScreen').classList.remove('hidden');
+window.scrollTo(0,0);
+}
+
+function exportToWord(){
+var now = new Date();
+var dateStr = now.toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+var timeStr = now.toLocaleTimeString('en-US');
+var total = state.questions.length;
+var score = 0;
+var keys = Object.keys(state.answers);
+for(var i=0;i<keys.length;i++){var idx = keys[i];if(state.questions[idx].correct === state.answers[idx]) score++;}
+var pct = total>0 ? Math.round((score/total)*100) : 0;
+var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Insurance & Risk Quiz Report</title><style>body{font-family:Calibri,sans-serif;color:#1a1a2e;line-height:1.6;padding:20px}h1{color:#1e40af;border-bottom:3px solid #fbbf24;padding-bottom:10px;font-size:24pt}h2{color:#7c3aed;margin-top:25px;font-size:16pt;border-bottom:1px solid #e5e7eb;padding-bottom:5px}.info-box{background:#f0f9ff;border:1px solid #bae6fd;padding:12px;border-radius:8px;margin:15px 0}.score-box{background:linear-gradient(135deg,#fef3c7,#fde68a);border:2px solid #f59e0b;padding:15px;border-radius:10px;text-align:center;margin:20px 0}.score-big{font-size:32pt;font-weight:bold;color:#92400e}.question{background:#f9fafb;border-left:4px solid #3b82f6;padding:12px;margin:15px 0;border-radius:5px;page-break-inside:avoid}.question.correct{border-left-color:#10b981}.question.wrong{border-left-color:#ef4444}.question.skipped{border-left-color:#f59e0b}.q-title{font-weight:bold;color:#1e293b;margin-bottom:8px;font-size:11pt}.q-arabic{color:#475569;font-size:10pt;margin-bottom:8pt;direction:rtl;text-align:right}.option{margin:4px 0;padding:4px 8px;font-size:10pt}.option.selected-correct{background:#d1fae5;color:#065f46;font-weight:bold;border-radius:4px}.option.selected-wrong{background:#fee2e2;color:#991b1b;text-decoration:line-through;border-radius:4px}.option.correct-answer{background:#dcfce7;color:#166534;font-weight:bold;border-radius:4px}.explanation{background:#faf5ff;border-left:3px solid #a855f7;padding:10px;margin-top:10px;font-size:10pt;color:#581c87;border-radius:4px}.badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:9pt;font-weight:bold;margin:2px}.badge-correct{background:#10b981;color:white}.badge-wrong{background:#ef4444;color:white}.badge-skipped{background:#f59e0b;color:white}table{width:100%;border-collapse:collapse;margin:15px 0}th{background:#1e40af;color:white;padding:8px;text-align:left}td{border:1px solid #e5e7eb;padding:8px}.footer{text-align:center;margin-top:30px;padding-top:15px;border-top:2px solid #e5e7eb;color:#64748b;font-size:9pt}</style></head><body><h1>Insurance & Risk Mastery Quiz - Report</h1><p style="color:#64748b;font-size:10pt">Chapters 2-3: Insurance and Risk |  | Pearson Education</p><div class="info-box"><strong>Student:</strong> '+state.playerName+'<br><strong>Date:</strong> '+dateStr+' '+timeStr+'<br><strong>Total Time:</strong> '+formatTime(state.elapsedSeconds)+'<br><strong>Total Questions:</strong> '+total+'<br><strong>Answered:</strong> '+Object.keys(state.answers).length+' / '+total+'</div><div class="score-box"><div style="font-size:11pt;color:#92400e;margin-bottom:5px">Final Score</div><div class="score-big">'+score+' / '+total+'</div><div style="font-size:18pt;color:#b45309;font-weight:bold">'+pct+'%</div></div><h2>Summary by Category</h2><table><tr><th>Category</th><th>Correct</th><th>Total</th><th>Percentage</th></tr>';
+var cats = [{key:'mcq',name:'MCQ Questions'},{key:'scenario',name:'Scenario Based'},{key:'classification',name:'Classification'},{key:'truefalse',name:'True / False'}];
+cats.forEach(function(c){var catQs = state.questions.filter(function(q){return q.category===c.key;});var catCorrect = catQs.filter(function(q){return state.answers[q.globalIndex] === q.correct;}).length;var catTotal = catQs.length;var catPct = Math.round((catCorrect/catTotal)*100);html += '<tr><td>'+c.name+'</td><td>'+catCorrect+'</td><td>'+catTotal+'</td><td>'+catPct+'%</td></tr>';});
+html += '</table>';
+var sections = [{key:'mcq',title:'Multiple Choice Questions'},{key:'scenario',title:'Scenario-Based Questions'},{key:'classification',title:'Classification Questions'},{key:'truefalse',title:'True / False Questions'}];
+sections.forEach(function(sec){html += '<h2>'+sec.title+'</h2>';state.questions.filter(function(q){return q.category===sec.key;}).forEach(function(q){var idx = q.globalIndex;var userAns = state.answers[idx];var answered = userAns !== undefined;var isCorrect = answered && userAns === q.correct;var statusClass = answered ? (isCorrect ? 'correct' : 'wrong') : 'skipped';var statusBadge = answered ? (isCorrect ? '<span class="badge badge-correct">Correct</span>' : '<span class="badge badge-wrong">Wrong</span>') : '<span class="badge badge-skipped">Skipped</span>';var letters = ['A','B','C','D'];html += '<div class="question '+statusClass+'"><div class="q-title">Q'+(idx+1)+'. '+q.en+' '+statusBadge+'</div><div class="q-arabic">'+q.ar+'</div>';if(q.scenario) html += '<p style="background:#fef3c7;padding:6px;border-radius:4px;font-size:10pt;color:#78350f"><em>'+q.scenario+'</em></p>';q.options.forEach(function(opt,i){var cls = 'option';if(i === q.correct) cls += ' correct-answer';if(answered && i === userAns){cls = isCorrect ? 'option selected-correct' : 'option selected-wrong';}html += '<div class="'+cls+'">'+letters[i]+'. '+opt.en+' | '+opt.ar+'</div>';});html += '<div class="explanation"><strong>Explanation:</strong> '+q.explanation.en+'<br><em style="direction:rtl;display:block;text-align:right;margin-top:5px">'+q.explanation.ar+'</em></div></div>';});});
+html += '<div class="footer"><p><strong>Generated:</strong> '+dateStr+' '+timeStr+'</p><p>Principles of Risk Management and Insurance - Chapters 2-3</p><p> | Pearson Education 2022</p></div></body></html>';
+var blob = new Blob(['\ufeff',html],{type:'application/msword'});
+var url = URL.createObjectURL(blob);
+var a = document.createElement('a');
+a.href = url;
+a.download = 'Insurance_Risk_Quiz_'+state.playerName.replace(/\s+/g,'_')+'_'+now.toISOString().slice(0,10)+'.doc';
+document.body.appendChild(a);
+a.click();
+document.body.removeChild(a);
+URL.revokeObjectURL(url);
+}
+
+document.getElementById('reviewConceptsBtn').addEventListener('click', showConcepts);
+document.getElementById('startQuizBtn').addEventListener('click', startQuiz);
+document.getElementById('gotItBtn').addEventListener('click', closeConcepts);
+document.getElementById('closeModalBtn').addEventListener('click', closeConcepts);
+document.getElementById('submitQuizBtn').addEventListener('click', submitQuiz);
+document.getElementById('restartBtn1').addEventListener('click', restartQuiz);
+document.getElementById('restartBtn2').addEventListener('click', restartQuiz);
+document.getElementById('reviewAnswersBtn').addEventListener('click', reviewAnswers);
+document.getElementById('backToResultsBtn').addEventListener('click', backToResults);
+document.getElementById('backToResultsBtn2').addEventListener('click', backToResults);
+document.getElementById('exportWordBtn1').addEventListener('click', exportToWord);
+document.getElementById('exportWordBtn2').addEventListener('click', exportToWord);
+document.getElementById('exportWordBtn3').addEventListener('click', exportToWord);
+document.getElementById('globalTranslationToggle').addEventListener('click', toggleGlobalTranslation);
+
+var filterBtns = document.querySelectorAll('.filter-btn');
+for(var i=0;i<filterBtns.length;i++){filterBtns[i].addEventListener('click', function(){filterCategory(this.dataset.filter);});}
+
+document.getElementById('conceptsModal').addEventListener('click', function(e){if(e.target === this) closeConcepts();});
+
+})();
+</script>
+<!-- 🎯 جزء تتبع الدرجات (نائم في غير الكويزات) -->
+<script>
+(function () {
+  var TRACK_URL = "https://script.google.com/macros/s/AKfycbzWhqHm8sl_fogZTB_E_WEgBwJjke3qZ574Yj8f8gI9_KYUelzA4-EI2azlvFE96YlC/exec";
+  var MAX_SCORE = 10;   // ← العظمى الافتراضية عندما لا تذكر النتيجةُ علتها
+  var QUIZZES = [
+    // { selector: "#q1-result", label: "Ch1 Quiz 1" },
+    // { selector: "#q2-result", label: "Ch1 Quiz 2" },
+  ];
+
+  var vid;
+  try {
+    var pm = location.search.match(/[?&]ebra_vid=([^&]+)/);
+    if (pm) {
+      vid = decodeURIComponent(pm[1]);
+      localStorage.setItem("ebra_vid", vid);
+    } else {
+      vid = localStorage.getItem("ebra_vid");
+      if (!vid) {
+        vid = "v-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 9);
+        localStorage.setItem("ebra_vid", vid);
+      }
+    }
+  } catch (e) { vid = "v-na"; }
+
+  function post(score, max, label) {
+    fetch(TRACK_URL, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        type: "score",
+        visitorId: vid,
+        quiz: label || "Quiz",
+        score: score,
+        max: max,
+        percent: Math.round((score / max) * 100),
+        page: location.origin + location.pathname
+      })
+    }).catch(function () {});
+  }
+
+  function parseScore(txt) {
+    txt = txt || "";
+    var m = txt.match(/(\d+(?:[.,]\d+)?)\s*(?:\/|من|out of|-)\s*(\d+)/) || txt.match(/(\d+(?:[.,]\d+)?)/);
+    if (!m) return null;
+    return {
+      score: parseFloat(m[1].replace(",", ".")),
+      max: m[2] ? parseFloat(m[2]) : null
+    };
+  }
+
+  /* 3) اليدوي */
+  var lastManual = {};
+  window.EBRA = window.EBRA || {};
+  window.EBRA.trackScore = function (score, max, label) {
+    var k = label + "|" + score + "/" + max;
+    var now = Date.now();
+    if (lastManual[k] && now - lastManual[k] < 3000) return;
+    lastManual[k] = now;
+    post(Number(score), Number(max) || MAX_SCORE, label);
+  };
+
+  /* 1) + 2) المسح التلقائي */
+  var lastSel = {};
+  function scan() {
+    for (var i = 0; i < QUIZZES.length; i++) {
+      var qz = QUIZZES[i];
+      var el = document.querySelector(qz.selector);
+      if (!el) continue;
+      var p = parseScore(el.textContent);
+      if (!p) continue;
+      if (lastSel[qz.selector] === p.score) continue;   // إعادة المحاولة بنفس الدرجة لا تُكرر
+      lastSel[qz.selector] = p.score;
+      post(p.score, p.max || MAX_SCORE, qz.label);
+    }
+    var els = document.querySelectorAll("[data-ebra-quiz]");
+    for (var j = 0; j < els.length; j++) {
+      var el2 = els[j];
+      if (el2.getAttribute("data-ebra-done")) continue;
+      var p2 = parseScore(el2.textContent);
+      if (!p2) continue;
+      el2.setAttribute("data-ebra-done", "1");
+      post(p2.score, p2.max || MAX_SCORE, el2.getAttribute("data-ebra-quiz"));
+    }
+  }
+
+  var timer = null;
+  function queueScan() {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(scan, 400);
+  }
+  try {
+    var mo = new MutationObserver(queueScan);
+    mo.observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+  } catch (e) {
+    setInterval(queueScan, 1500);
+  }
+  document.addEventListener("DOMContentLoaded", queueScan);
+  window.addEventListener("load", queueScan);
+})();
+</script>
+
+<!-- 📡 جزء تتبع الزيارات -->
+<script>
+(function () {
+  var TRACK_URL = "https://script.google.com/macros/s/AKfycbzWhqHm8sl_fogZTB_E_WEgBwJjke3qZ574Yj8f8gI9_KYUelzA4-EI2azlvFE96YlC/exec";
+  var vid;
+  try {
+    var pm = location.search.match(/[?&]ebra_vid=([^&]+)/);
+    if (pm) {
+      vid = decodeURIComponent(pm[1]);
+      localStorage.setItem("ebra_vid", vid);
+    } else {
+      vid = localStorage.getItem("ebra_vid");
+      if (!vid) {
+        vid = "v-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 9);
+        localStorage.setItem("ebra_vid", vid);
+      }
+    }
+  } catch (e) { vid = "v-na"; }
+  fetch(TRACK_URL, {
+    method: "POST",
+    mode: "cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify({
+      visitorId: vid,
+      page: location.origin + location.pathname,
+      referrer: document.referrer || "Direct",
+      language: navigator.language || "",
+      screen: window.screen ? (screen.width + "x" + screen.height) : "",
+      ua: navigator.userAgent
+    })
+  }).catch(function () {});
+})();
+</script>
+
+</body>
+</html>
